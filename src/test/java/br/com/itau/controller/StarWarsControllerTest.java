@@ -38,5 +38,15 @@ public class StarWarsControllerTest {
 				.andExpect(MockMvcResultMatchers.status().is(200));
 
 	}
+	
+//	@Test
+//	public void deveriaDevolver404BuscaPlanetaid100() throws Exception {
+//		Long idPesquisado = 100L;
+//		URI uri = new URI("/starwars/planeta/" + idPesquisado);
+//		
+//		mockMvc.perform(MockMvcRequestBuilders.get(uri))
+//				.andExpect(MockMvcResultMatchers.status().is(500));
+//
+//	}
 
 }

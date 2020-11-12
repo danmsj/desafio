@@ -45,7 +45,7 @@ public class StarWarsControllerTest {
 		URI uri = new URI("/starwars/planeta/" + idPesquisado);
 		
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
-				.andExpect(MockMvcResultMatchers.status().is(500));
+				.andExpect(MockMvcResultMatchers.status().is(400));
 
 	}
 

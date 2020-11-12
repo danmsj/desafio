@@ -32,7 +32,6 @@ public interface FeignStarWars {
 	@RequestMapping(value= "/people/", method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	ResultadoPersonagemVo findAllPersonagem(@RequestParam(value="name",required = false)  String name);
 	
-
 	
 	
 	@RequestMapping(value = "/planets/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)

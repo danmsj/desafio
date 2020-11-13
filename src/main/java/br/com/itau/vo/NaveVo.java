@@ -15,16 +15,16 @@ public class NaveVo {
 
 	private String nome;
 	private String model;
-	private String starshipClass;
+	private String starship_class;
 	private String manufacturer;
-	private String costInCredits;
+	private String cost_in_credits;
 	private String length;
 	private String crew;
 	private String passengers;
-	private String maxAtmospheringSpeed;
-	private String hyperdriveRating;
+	private String max_atmosphering_speed;
+	private String hyperdrive_rating;
 	private String mglt;
-	private String cargoCapacity;
+	private String cargo_capacity;
 	private String consumables;
 	private List<String> films;
 	private List<String> pilots;

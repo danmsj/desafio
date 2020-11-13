@@ -14,4 +14,6 @@ import lombok.NoArgsConstructor;
 public class ResultadoNaveVo {
 
 	private List<NaveVo> results;
+	private String next;
+	private String previous;
 }

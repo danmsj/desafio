@@ -14,4 +14,6 @@ import lombok.NoArgsConstructor;
 public class ResultadoPlanetaVo {
 
 	private List<PlanetaVo> results;
+	private String next;
+	private String previous;
 }

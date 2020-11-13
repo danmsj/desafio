@@ -14,4 +14,6 @@ import lombok.NoArgsConstructor;
 public class ResultadoPersonagemVo {
 
 	private List<PersonagemVo> results;
+	private String next;
+	private String previous;
 }

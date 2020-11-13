@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import br.com.itau.util.Constants;
 
+
+
 /**
  * Exception for validations errors
  */

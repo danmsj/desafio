@@ -17,11 +17,11 @@ public class EspecieVo {
 	private String name;
 	private String classification;
 	private String designation;
-	private String avarageHeigt;
-	private String avarageLifespan;
-	private String eyeColors;
-	private String hairColors;
-	private String skinColors;
+	private String avarage_heigt;
+	private String avarage_lifespan;
+	private String eye_colors;
+	private String hair_colors;
+	private String skin_colors;
 	private String language;
 	private String homewolrd;
 	private List<String> people;
@@ -29,6 +29,6 @@ public class EspecieVo {
 	private String url;
 	private String created;
 	private String edited;
-	private List<String> especiesRelacionadoPersonagem;
+	private List<String> especiesRelacionadoFilme;
 }
 

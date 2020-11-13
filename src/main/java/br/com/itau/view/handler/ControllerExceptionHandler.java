@@ -93,18 +93,7 @@ public class ControllerExceptionHandler {
 		return new ResponseEntity<>(error, HttpStatus.GATEWAY_TIMEOUT);
 	}
 
-	/*@ExceptionHandler(HttpHostConnectException.class)
-	@ResponseBody
-	public ResponseEntity<ErrorResponse> handleHttpHostConnectException(final HttpHostConnectException ex) {
-		final ErrorResponse error = new ErrorResponse(HttpStatus.GATEWAY_TIMEOUT.toString(), "Gateway timeout", "Serviço indisponível!");
-		log.info("HttpHostConnectException: {}", error);
-		return new ResponseEntity<>(error, HttpStatus.GATEWAY_TIMEOUT);
-	}*/
-
 	
-
-	
-
 
 	@ExceptionHandler(BindException.class)
 	@ResponseBody
@@ -190,8 +179,6 @@ public class ControllerExceptionHandler {
 		log.info("Method Argument Not Valid: {}", error);
 		return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
 	}
-
-	
 
 	
 

@@ -10,12 +10,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.itau.feign.FeignStarWars;
 import br.com.itau.model.Contador;
-import br.com.itau.param.ParamEspecie;
-import br.com.itau.param.ParamFilme;
-import br.com.itau.param.ParamNave;
-import br.com.itau.param.ParamPersonagem;
-import br.com.itau.param.ParamPlaneta;
-import br.com.itau.param.ParamVeiculo;
 import br.com.itau.repository.ContadorRepository;
 import br.com.itau.validator.ValidatorExpection;
 import br.com.itau.vo.AcessosVo;
@@ -83,9 +77,17 @@ public class StarWarsService {
 
 	}
 
-	public ResultadoPersonagemVo findAllPersonagem(ParamPersonagem params) {
+	public ResultadoPersonagemVo findAllPersonagem() {
 
-		return this.feignStarWars.findAllPersonagem(params.getName());
+		return this.feignStarWars.findAllPersonagem();
+	}
+
+	public ResultadoPersonagemVo findAllPersonagemPagina(Long idPagina) {
+		if (idPagina <= 1) {
+			return this.feignStarWars.findAllPersonagem();
+		} else {
+			return this.feignStarWars.findAllPersonagemPagina(idPagina);
+		}
 	}
 
 	public PlanetaVo findByIdPlaneta(Long id) {
@@ -132,11 +134,19 @@ public class StarWarsService {
 
 	}
 
-	public ResultadoPlanetaVo findAllPlaneta(ParamPlaneta params) {
+	public ResultadoPlanetaVo findAllPlaneta() {
 
-		return this.feignStarWars.findAllPlaneta(params.getName());
+		return this.feignStarWars.findAllPlaneta();
 	}
 
+	public ResultadoPlanetaVo findAllPlanetaPagina(Long idPagina) {
+		if (idPagina <= 1) {
+			return this.feignStarWars.findAllPlaneta();
+		} else {
+			return this.feignStarWars.findAllPlanetaPagina(idPagina);
+		}
+	}
+	
 	public VeiculoVo findByIdVeiculo(Long id) {
 
 		VeiculoVo veiculoFilme = new VeiculoVo();
@@ -182,11 +192,18 @@ public class StarWarsService {
 
 	}
 
-	public ResultadoVeiculoVo findAllVeiculo(ParamVeiculo params) {
+	public ResultadoVeiculoVo findAllVeiculo() {
 
-		return this.feignStarWars.findAllVeiculo(params.getName());
+		return this.feignStarWars.findAllVeiculo();
 	}
 
+	public ResultadoVeiculoVo findAllVeiculoPagina(Long idPagina) {
+		if (idPagina <= 1) {
+			return this.feignStarWars.findAllVeiculo();
+		} else {
+			return this.feignStarWars.findAllVeiculoPagina(idPagina);
+		}
+	}
 	public NaveVo findByIdNave(Long id) {
 
 		NaveVo navePiloto = new NaveVo();
@@ -232,36 +249,44 @@ public class StarWarsService {
 
 	}
 
-	public ResultadoNaveVo findAllNave(ParamNave params) {
+	public ResultadoNaveVo findAllNave() {
 
-		return this.feignStarWars.findAllNave(params.getName());
+		return this.feignStarWars.findAllNave();
 	}
 
+	public ResultadoNaveVo findAllNavePagina(Long idPagina) {
+		if (idPagina <= 1) {
+			return this.feignStarWars.findAllNave();
+		} else {
+			return this.feignStarWars.findAllNavePagina(idPagina);
+		}
+	}
+	
 	public EspecieVo findByIdEspecie(Long id) {
 
-		EspecieVo especiePersonagem = new EspecieVo();
+		EspecieVo especieFilme = new EspecieVo();
 		try {
-			especiePersonagem = this.feignStarWars.findByIdEspecie(id);
+			especieFilme = this.feignStarWars.findByIdEspecie(id);
 		} catch (Exception e) {
 			throw ValidatorExpection.newException("O ID " + id + " PESQUISADO NÃO EXISTE NA API BASE ");
 		}
-		List<Long> guardaIdPersonagem = new ArrayList<Long>();
-		for (String separaListaPersonagem : especiePersonagem.getFilms()) {
-			String personagem = separaListaPersonagem;
-			String[] separaUrlPersonagem = personagem.split("/");
-			Long IdPersonagemEspecie = Long.parseLong(separaUrlPersonagem[separaUrlPersonagem.length - 1]);
-			guardaIdPersonagem.add(IdPersonagemEspecie);
+		List<Long> guardaIdFilme = new ArrayList<Long>();
+		for (String separaListaFilme : especieFilme.getFilms()) {
+			String filme = separaListaFilme;
+			String[] separaUrlFilme = filme.split("/");
+			Long IdFilmeEspecie = Long.parseLong(separaUrlFilme[separaUrlFilme.length - 1]);
+			guardaIdFilme.add(IdFilmeEspecie);
 
 		}
 
-		for (Long personagemId : guardaIdPersonagem) {
-			PersonagemVo personagem = findByIdPersonagemRelacionados(personagemId);
+		for (Long filmeId : guardaIdFilme) {
+			FilmeVo filme = findByIdFilmeRelacionados(filmeId);
 
 			String urlEspecie = URL_ESPECIE;
 
 			List<String> url = new ArrayList<String>();
 			int contador = 0;
-			for (String especieRelacionado : personagem.getSpecies()) {
+			for (String especieRelacionado : filme.getSpecies()) {
 
 				if (contador < 3) {
 					String[] especie = especieRelacionado.split("/");
@@ -272,19 +297,27 @@ public class StarWarsService {
 						contador++;
 					}
 				}
-				especiePersonagem.setEspeciesRelacionadoPersonagem(url);
+				especieFilme.setEspeciesRelacionadoFilme(url);
 			}
 
 		}
 
 		setContadorAcesso(URL_ESPECIE + id);
-		return especiePersonagem;
+		return especieFilme;
 
 	}
 
-	public ResultadoEspecieVo findAllEspecie(ParamEspecie params) {
+	public ResultadoEspecieVo findAllEspecie() {
 
-		return this.feignStarWars.findAllEspecie(params.getName());
+		return this.feignStarWars.findAllEspecie();
+	}
+	
+	public ResultadoEspecieVo findAllEspeciePagina(Long idPagina) {
+		if (idPagina <= 1) {
+			return this.feignStarWars.findAllEspecie();
+		} else {
+			return this.feignStarWars.findAllEspeciesPagina(idPagina);
+		}
 	}
 
 	public FilmeVo findByIdFilme(Long id) {
@@ -332,10 +365,20 @@ public class StarWarsService {
 
 	}
 
-	public ResultadoFilmeVo findAllFilme(ParamFilme params) {
+	public ResultadoFilmeVo findAllFilme() {
 
-		return this.feignStarWars.findAllFilme(params.getName());
+		return this.feignStarWars.findAllFilme();
 	}
+	
+	public ResultadoFilmeVo findAllFilmePagina(Long idPagina) {
+		if (idPagina <= 1) {
+			return this.feignStarWars.findAllFilme();
+		} else {
+			return this.feignStarWars.findAllFilmePagina(idPagina);
+		}
+	}
+	
+	
 
 	private PersonagemVo findByIdPersonagemRelacionados(Long idPersonagem) {
 		return this.feignStarWars.findByIdPersonagemRelacionados(idPersonagem);
@@ -349,6 +392,8 @@ public class StarWarsService {
 		return this.feignStarWars.findByIdPlanetaRelacionados(idPlaneta);
 	}
 
+	
+	
 	public void setContadorAcesso(String path) {
 		Contador contador = null;
 		contador = this.contadorRepository.findFirstByUrlOrderByIdDesc(path).orElse(null);

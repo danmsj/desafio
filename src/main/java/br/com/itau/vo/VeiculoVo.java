@@ -15,14 +15,14 @@ public class VeiculoVo {
 
 	private String name;
 	private String model;
-	private String vehicleClass;
+	private String vehicle_class;
 	private String manufacturer; 
 	private String lenght;
-	private String costInCredits;
+	private String cost_in_credits;
 	private String crew; 
 	private String passengers; 
-	private String maxAtmospheringSpeed;
-	private String cargoCapacity;
+	private String max_atmosphering_speed;
+	private String cargo_capacity;
 	private String consumables; 
 	private List<String> films;
 	private List<String> pilots; 

@@ -5,7 +5,6 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.itau.vo.EspecieVo;
 import br.com.itau.vo.FilmeVo;
@@ -29,9 +28,13 @@ public interface FeignStarWars {
 	@RequestMapping(value = "/people/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	PersonagemVo findByIdPersonagem(@PathVariable("id") Long id);
 	
-	@RequestMapping(value= "/people/", method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-	ResultadoPersonagemVo findAllPersonagem(@RequestParam(value="name",required = false)  String name);
+	@RequestMapping(value = "/people/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	ResultadoPersonagemVo findAllPersonagem();
 	
+	@RequestMapping(value = "/people/?page={pagina}",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	ResultadoPersonagemVo findAllPersonagemPagina(@PathVariable("pagina") Long pagina);
+
+			
 	
 	
 	@RequestMapping(value = "/planets/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
@@ -41,9 +44,11 @@ public interface FeignStarWars {
 	PlanetaVo findByIdPlaneta(@PathVariable("id") Long id);
 	
 	@RequestMapping(value = "/planets/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-	ResultadoPlanetaVo findAllPlaneta(@RequestParam(value="name",required = false)  String name);
+	ResultadoPlanetaVo findAllPlaneta();
 	
-
+	@RequestMapping(value = "/planets/?page={pagina}",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	ResultadoPlanetaVo findAllPlanetaPagina(@PathVariable("pagina") Long pagina);
+	
 	
 	
 	@RequestMapping(value = "/films/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
@@ -53,18 +58,21 @@ public interface FeignStarWars {
 	FilmeVo findByIdFilme(@PathVariable("id") Long id);
 	
 	@RequestMapping(value= "/films/", method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-	ResultadoFilmeVo findAllFilme(@RequestParam(value="name",required = false)  String name);
+	ResultadoFilmeVo findAllFilme();
 	
-
+	@RequestMapping(value = "/films/?page={pagina}",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	ResultadoFilmeVo findAllFilmePagina(@PathVariable("pagina") Long pagina);
+	
 	
 	
 	@RequestMapping(value = "/species/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	EspecieVo findByIdEspecie(@PathVariable("id") Long id);
 	
 	@RequestMapping(value = "/species/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-	ResultadoEspecieVo findAllEspecie(@RequestParam(value="name",required = false)  String name);
+	ResultadoEspecieVo findAllEspecie();
 	
-	
+	@RequestMapping(value = "/species/?page={pagina}",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	ResultadoEspecieVo findAllEspeciesPagina(@PathVariable("pagina") Long pagina);
 	
 	
 	
@@ -72,16 +80,20 @@ public interface FeignStarWars {
 	NaveVo findByIdNave(@PathVariable("id") Long id);
 	
 	@RequestMapping(value= "/starships/", method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-	ResultadoNaveVo findAllNave(@RequestParam(value="name",required = false)  String name);
+	ResultadoNaveVo findAllNave();
 	
-
+	@RequestMapping(value = "/starships/?page={pagina}",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	ResultadoNaveVo findAllNavePagina(@PathVariable("pagina") Long pagina);
 	
 
 	@RequestMapping(value = "/vehicles/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	VeiculoVo findByIdVeiculo(@PathVariable("id") Long id);
 	
 	@RequestMapping(value = "/vehicles/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-	ResultadoVeiculoVo findAllVeiculo(@RequestParam(value="name",required = false)  String name);
+	ResultadoVeiculoVo findAllVeiculo();
+	
+	@RequestMapping(value = "/vehicles/?page={pagina}",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	ResultadoVeiculoVo findAllVeiculoPagina(@PathVariable("pagina") Long pagina);
 	
 
 }

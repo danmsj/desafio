@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
 public class PersonagemVo {
 	
 	private String name;
-	private String birthYear;
-	private String eyeColor;
+	private String birth_year;
+	private String eye_color;
 	private String gender;
-	private String hairColor;
+	private String hair_color;
 	private String height;
 	private String mass;
-	private String skinColor;
+	private String skin_color;
 	private String homeworld;
 	private List<String> films;
 	private List<String> species;
@@ -30,4 +30,5 @@ public class PersonagemVo {
 	private String created;
 	private String edited;
 	private List<String> personagemRelacionadoPlaneta;
+	
 }

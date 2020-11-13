@@ -14,4 +14,6 @@ import lombok.NoArgsConstructor;
 public class ResultadoEspecieVo {
 
 	private List<EspecieVo> results;
+	private String next;
+	private String previous;
 }

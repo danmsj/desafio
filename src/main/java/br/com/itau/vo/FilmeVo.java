@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 public class FilmeVo {
 
 	private String title;
-	private int episodeId;
-	private String openingCrawl;
+	private int episode_id;
+	private String opening_crawl;
 	private String director;
 	private String producer;
-	private Date realeaseDate;
+	private Date realease_date;
 	private List<String> species;
 	private List<String> starships;
 	private List<String> vehicles;

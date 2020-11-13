@@ -12,6 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import br.com.itau.validator.ValidatorExpection;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -39,13 +41,13 @@ public class StarWarsControllerTest {
 	}
 	
 	@Test
-	public void deveriaDevolver404BuscaPlanetaid100() throws Exception {
+	public void deveriaDevolver400BuscaPlanetaid100() throws Exception {
 		Long idPesquisado = 100L;
 		URI uri = new URI("/starwars/planeta/" + idPesquisado);
 		
 		mockMvc.perform(MockMvcRequestBuilders.get(uri))
 				.andExpect(MockMvcResultMatchers.status().is(400));
-
+		
 	}
 
 }

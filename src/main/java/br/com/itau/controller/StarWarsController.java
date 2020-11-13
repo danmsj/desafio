@@ -92,7 +92,15 @@ public class StarWarsController {
 		return this.starWarsService.findByIdVeiculo(id);
 
 	}
-	@ApiOperation(value="Consulta todos os veículos")
+	
+	@ApiOperation(value="Consulta veiculo por página")
+	@GetMapping("/veiculo/pagina={pagina}")
+	public ResultadoVeiculoVo findAllVeiculoPagina(@PathVariable Long pagina) {
+		return this.starWarsService.findAllVeiculoPagina(pagina);
+
+	}
+	
+	@ApiOperation(value="Consulta default veículos página 1")
 	@GetMapping("/veiculo")
 	public ResultadoVeiculoVo findAllVeiculo() {
 		return this.starWarsService.findAllVeiculo();
@@ -104,7 +112,14 @@ public class StarWarsController {
 		return this.starWarsService.findByIdNave(id);
 
 	}
-	@ApiOperation(value="Consulta todas as naves")
+	
+	@ApiOperation(value="Consulta nave por página")
+	@GetMapping("/nave/pagina={pagina}")
+	public ResultadoNaveVo findAllNavePagina(@PathVariable Long pagina) {
+		return this.starWarsService.findAllNavePagina(pagina);
+
+	}
+	@ApiOperation(value="Consulta default naves página 1")
 	@GetMapping("/nave")
 	public ResultadoNaveVo findAllNave() {
 		return this.starWarsService.findAllNave();
@@ -116,7 +131,14 @@ public class StarWarsController {
 		return this.starWarsService.findByIdEspecie(id);
 
 	}
-	@ApiOperation(value="Consulta todas as espécies")
+	
+	@ApiOperation(value="Consulta espécie por página")
+	@GetMapping("/especie/pagina={pagina}")
+	public ResultadoEspecieVo findAllEspeciePagina(@PathVariable Long pagina) {
+		return this.starWarsService.findAllEspeciePagina(pagina);
+
+	}
+	@ApiOperation(value="Consulta default especies página 1")
 	@GetMapping("/especie")
 	public ResultadoEspecieVo findAllEspecie() {
 		return this.starWarsService.findAllEspecie();
@@ -128,7 +150,14 @@ public class StarWarsController {
 		return this.starWarsService.findByIdFilme(id);
 
 	}
-	@ApiOperation(value="Consulta todos os filmes")
+	
+	@ApiOperation(value="Consulta filmes por página")
+	@GetMapping("/filme/pagina={pagina}")
+	public ResultadoFilmeVo findAllFilmePagina(@PathVariable Long pagina) {
+		return this.starWarsService.findAllFilmePagina(pagina);
+
+	}
+	@ApiOperation(value="Consulta default filmes página 1")
 	@GetMapping("/filme")
 	public ResultadoFilmeVo findAllFilme() {
 		return this.starWarsService.findAllFilme();

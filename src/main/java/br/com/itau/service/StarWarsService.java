@@ -86,7 +86,11 @@ public class StarWarsService {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllPersonagem();
 		} else {
+			try {
 			return this.feignStarWars.findAllPersonagemPagina(idPagina);
+			} catch (Exception e) {
+				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
+			}
 		}
 	}
 
@@ -143,7 +147,11 @@ public class StarWarsService {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllPlaneta();
 		} else {
+			try {
 			return this.feignStarWars.findAllPlanetaPagina(idPagina);
+			} catch (Exception e) {
+				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
+			}
 		}
 	}
 	
@@ -201,7 +209,11 @@ public class StarWarsService {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllVeiculo();
 		} else {
+			try {
 			return this.feignStarWars.findAllVeiculoPagina(idPagina);
+			} catch (Exception e) {
+				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
+			}
 		}
 	}
 	public NaveVo findByIdNave(Long id) {
@@ -258,7 +270,11 @@ public class StarWarsService {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllNave();
 		} else {
+			try {
 			return this.feignStarWars.findAllNavePagina(idPagina);
+			} catch (Exception e) {
+				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
+			}
 		}
 	}
 	
@@ -316,7 +332,11 @@ public class StarWarsService {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllEspecie();
 		} else {
+			try {
 			return this.feignStarWars.findAllEspeciesPagina(idPagina);
+			} catch (Exception e) {
+				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
+			}
 		}
 	}
 
@@ -374,7 +394,11 @@ public class StarWarsService {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllFilme();
 		} else {
+			try {
 			return this.feignStarWars.findAllFilmePagina(idPagina);
+			} catch (Exception e) {
+				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
+			}
 		}
 	}
 	

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: br.com.itau.controller.StarWarsControllerTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 34.699 s - in br.com.itau.controller.StarWarsControllerTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.286 s - in br.com.itau.controller.StarWarsControllerTest

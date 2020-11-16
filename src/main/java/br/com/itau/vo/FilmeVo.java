@@ -2,6 +2,7 @@ package br.com.itau.vo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.TreeSet;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,6 +29,7 @@ public class FilmeVo {
 	private String url;
 	private String created;
 	private String edited;
-	private List<String> filmeRelacionadoPersonagem;
+	private TreeSet<String> filmeRelacionadoEspecie;
+	
 
 }

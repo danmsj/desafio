@@ -64,6 +64,8 @@ public interface FeignStarWars {
 	ResultadoFilmeVo findAllFilmePagina(@PathVariable("pagina") Long pagina);
 	
 	
+	@RequestMapping(value = "/species/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	EspecieVo findByIdEspecieRelacionados(@PathVariable("id") Long id);
 	
 	@RequestMapping(value = "/species/{id}/",method= RequestMethod.GET,consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
 	EspecieVo findByIdEspecie(@PathVariable("id") Long id);

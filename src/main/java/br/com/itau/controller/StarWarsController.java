@@ -144,7 +144,7 @@ public class StarWarsController {
 		return this.starWarsService.findAllEspecie();
 
 	}
-	@ApiOperation(value="Consulta pelo ID do filme, retornando o filme e sugestão relacionada por personagem")
+	@ApiOperation(value="Consulta pelo ID do filme, retornando o filme e sugestão relacionada por espécie")
 	@GetMapping("/filme/{id}")
 	public FilmeVo findByIdFilme(@PathVariable Long id) throws Exception {
 		return this.starWarsService.findByIdFilme(id);

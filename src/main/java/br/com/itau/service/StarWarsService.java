@@ -2,6 +2,7 @@ package br.com.itau.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -58,11 +59,12 @@ public class StarWarsService {
 		List<String> url = new ArrayList<String>();
 		int contador = 0;
 		for (String personagemRelacionados : planetaVo.getResidents()) {
-			if (contador < 3) {
+		
 				String[] personagem = personagemRelacionados.split("/");
 				Long idPersonagem = Long.parseLong(personagem[personagem.length - 1]);
 
 				if (id.compareTo(idPersonagem) != 0) {
+					if (contador < 3) {
 					url.add(urlPersonagem + idPersonagem);
 					contador++;
 				}
@@ -87,7 +89,7 @@ public class StarWarsService {
 			return this.feignStarWars.findAllPersonagem();
 		} else {
 			try {
-			return this.feignStarWars.findAllPersonagemPagina(idPagina);
+				return this.feignStarWars.findAllPersonagemPagina(idPagina);
 			} catch (Exception e) {
 				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
 			}
@@ -109,21 +111,22 @@ public class StarWarsService {
 			guardaIdFilmes.add(idFilmesPlaneta);
 
 		}
-
+		TreeSet<String> url = new TreeSet<String>();
+		int contador = 0;
 		for (Long filmeId : guardaIdFilmes) {
 			FilmeVo filme = findByIdFilmeRelacionados(filmeId);
 
 			String urlPlaneta = URL_PLANETA;
 
-			List<String> url = new ArrayList<String>();
-			int contador = 0;
+			
 			for (String planetaRelacionados : filme.getPlanets()) {
 
-				if (contador < 3) {
+				
 					String[] planeta = planetaRelacionados.split("/");
 					Long idPlaneta = Long.parseLong(planeta[planeta.length - 1]);
-
+					
 					if (id.compareTo(idPlaneta) != 0) {
+						if (contador < 3) {
 						url.add(urlPlaneta + idPlaneta);
 						contador++;
 					}
@@ -148,13 +151,13 @@ public class StarWarsService {
 			return this.feignStarWars.findAllPlaneta();
 		} else {
 			try {
-			return this.feignStarWars.findAllPlanetaPagina(idPagina);
+				return this.feignStarWars.findAllPlanetaPagina(idPagina);
 			} catch (Exception e) {
 				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
 			}
 		}
 	}
-	
+
 	public VeiculoVo findByIdVeiculo(Long id) {
 
 		VeiculoVo veiculoFilme = new VeiculoVo();
@@ -171,20 +174,20 @@ public class StarWarsService {
 			guardaIdFilmes.add(idFilmesVeiculo);
 
 		}
-
+		TreeSet<String> url = new TreeSet<String>();
+		int contador = 0;
 		for (Long filmeId : guardaIdFilmes) {
 			FilmeVo filme = findByIdFilmeRelacionados(filmeId);
 
 			String urlVeiculo = URL_VEICULO;
 
-			List<String> url = new ArrayList<String>();
-			int contador = 0;
+			
 			for (String veiculoRelacionados : filme.getVehicles()) {
 
-				if (contador < 3) {
+			
 					String[] veiculo = veiculoRelacionados.split("/");
 					Long idVeiculo = Long.parseLong(veiculo[veiculo.length - 1]);
-
+					if (contador < 3) {
 					if (id.compareTo(idVeiculo) != 0) {
 						url.add(urlVeiculo + idVeiculo);
 						contador++;
@@ -210,12 +213,13 @@ public class StarWarsService {
 			return this.feignStarWars.findAllVeiculo();
 		} else {
 			try {
-			return this.feignStarWars.findAllVeiculoPagina(idPagina);
+				return this.feignStarWars.findAllVeiculoPagina(idPagina);
 			} catch (Exception e) {
 				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
 			}
 		}
 	}
+
 	public NaveVo findByIdNave(Long id) {
 
 		NaveVo navePiloto = new NaveVo();
@@ -232,21 +236,22 @@ public class StarWarsService {
 			guardaIdPiloto.add(IdPilotoNave);
 
 		}
-
+		TreeSet<String> url = new TreeSet<String>();
+		int contador = 0;
 		for (Long pilotoId : guardaIdPiloto) {
 			PersonagemVo piloto = findByIdPersonagemRelacionados(pilotoId);
 
 			String urlNave = URL_NAVE;
 
-			List<String> url = new ArrayList<String>();
-			int contador = 0;
+			
 			for (String naveRelacionados : piloto.getStarships()) {
 
-				if (contador < 3) {
+				
 					String[] nave = naveRelacionados.split("/");
 					Long idNave = Long.parseLong(nave[nave.length - 1]);
 
 					if (id.compareTo(idNave) != 0) {
+						if (contador < 3) {
 						url.add(urlNave + idNave);
 						contador++;
 					}
@@ -271,13 +276,13 @@ public class StarWarsService {
 			return this.feignStarWars.findAllNave();
 		} else {
 			try {
-			return this.feignStarWars.findAllNavePagina(idPagina);
+				return this.feignStarWars.findAllNavePagina(idPagina);
 			} catch (Exception e) {
 				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
 			}
 		}
 	}
-	
+
 	public EspecieVo findByIdEspecie(Long id) {
 
 		EspecieVo especieFilme = new EspecieVo();
@@ -294,21 +299,22 @@ public class StarWarsService {
 			guardaIdFilme.add(IdFilmeEspecie);
 
 		}
-
+		int contador = 0;
+		TreeSet<String> url = new TreeSet<String>();
 		for (Long filmeId : guardaIdFilme) {
 			FilmeVo filme = findByIdFilmeRelacionados(filmeId);
 
 			String urlEspecie = URL_ESPECIE;
-
-			List<String> url = new ArrayList<String>();
-			int contador = 0;
+			
 			for (String especieRelacionado : filme.getSpecies()) {
 
-				if (contador < 3) {
+				
 					String[] especie = especieRelacionado.split("/");
 					Long idEspecie = Long.parseLong(especie[especie.length - 1]);
-
+					
+					
 					if (id.compareTo(idEspecie) != 0) {
+						if (contador < 3) {
 						url.add(urlEspecie + idEspecie);
 						contador++;
 					}
@@ -327,13 +333,13 @@ public class StarWarsService {
 
 		return this.feignStarWars.findAllEspecie();
 	}
-	
+
 	public ResultadoEspecieVo findAllEspeciePagina(Long idPagina) {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllEspecie();
 		} else {
 			try {
-			return this.feignStarWars.findAllEspeciesPagina(idPagina);
+				return this.feignStarWars.findAllEspeciesPagina(idPagina);
 			} catch (Exception e) {
 				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
 			}
@@ -342,46 +348,50 @@ public class StarWarsService {
 
 	public FilmeVo findByIdFilme(Long id) {
 
-		FilmeVo filmePersonagem = new FilmeVo();
+		FilmeVo filmeEspecie = new FilmeVo();
 		try {
-			filmePersonagem = this.feignStarWars.findByIdFilme(id);
+			filmeEspecie = this.feignStarWars.findByIdFilme(id);
 		} catch (Exception e) {
 			throw ValidatorExpection.newException("O ID " + id + " PESQUISADO NÃO EXISTE NA API BASE ");
 		}
-		List<Long> guardaIdPersonagem = new ArrayList<Long>();
-		for (String separaListaPersonagem : filmePersonagem.getCharacters()) {
-			String personagem = separaListaPersonagem;
-			String[] separaUrlPersonagem = personagem.split("/");
-			Long IdPersonagemFilme = Long.parseLong(separaUrlPersonagem[separaUrlPersonagem.length - 1]);
-			guardaIdPersonagem.add(IdPersonagemFilme);
+		List<Long> guardaIdEspecie = new ArrayList<Long>();
+		for (String separaListaEspecie : filmeEspecie.getSpecies()) {
+			String especie = separaListaEspecie;
+			String[] separaUrlEspecie = especie.split("/");
+			Long IdEspecieFilme = Long.parseLong(separaUrlEspecie[separaUrlEspecie.length - 1]);
+			guardaIdEspecie.add(IdEspecieFilme);
 
 		}
-
-		for (Long personagemId : guardaIdPersonagem) {
-			PersonagemVo personagem = findByIdPersonagemRelacionados(personagemId);
+		int contador = 0;
+		TreeSet<String> url = new TreeSet<String>();
+		for (Long especieId : guardaIdEspecie) {
+			EspecieVo especie = findByIdEspecieRelacionados(especieId);
 
 			String urlFilme = URL_FILME;
 
-			List<String> url = new ArrayList<String>();
-			int contador = 0;
-			for (String filmeRelacionado : personagem.getFilms()) {
+			for (String filmeRelacionado : especie.getFilms()) {
 
-				if (contador < 3) {
-					String[] filme = filmeRelacionado.split("/");
-					Long idFilme = Long.parseLong(filme[filme.length - 1]);
+				String[] filme = filmeRelacionado.split("/");
+				Long idFilme = Long.parseLong(filme[filme.length - 1]);
 
-					if (id.compareTo(idFilme) != 0) {
+				if (id.compareTo(idFilme) != 0) {
+					if (contador < 3) {
 						url.add(urlFilme + idFilme);
 						contador++;
+					
 					}
+
 				}
-				filmePersonagem.setFilmeRelacionadoPersonagem(url);
+
+				filmeEspecie.setFilmeRelacionadoEspecie(url);
+
 			}
 
 		}
 
 		setContadorAcesso(URL_FILME + id);
-		return filmePersonagem;
+
+		return filmeEspecie;
 
 	}
 
@@ -389,20 +399,18 @@ public class StarWarsService {
 
 		return this.feignStarWars.findAllFilme();
 	}
-	
+
 	public ResultadoFilmeVo findAllFilmePagina(Long idPagina) {
 		if (idPagina <= 1) {
 			return this.feignStarWars.findAllFilme();
 		} else {
 			try {
-			return this.feignStarWars.findAllFilmePagina(idPagina);
+				return this.feignStarWars.findAllFilmePagina(idPagina);
 			} catch (Exception e) {
 				throw ValidatorExpection.newException("O ID " + idPagina + " PESQUISADO NÃO EXISTE NA API BASE ");
 			}
 		}
 	}
-	
-	
 
 	private PersonagemVo findByIdPersonagemRelacionados(Long idPersonagem) {
 		return this.feignStarWars.findByIdPersonagemRelacionados(idPersonagem);
@@ -416,8 +424,10 @@ public class StarWarsService {
 		return this.feignStarWars.findByIdPlanetaRelacionados(idPlaneta);
 	}
 
-	
-	
+	private EspecieVo findByIdEspecieRelacionados(Long idEspecie) {
+		return this.feignStarWars.findByIdEspecieRelacionados(idEspecie);
+	}
+
 	public void setContadorAcesso(String path) {
 		Contador contador = null;
 		contador = this.contadorRepository.findFirstByUrlOrderByIdDesc(path).orElse(null);

@@ -12,7 +12,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 	public class SwaggerConfiguracao {
 		
 		@Bean
-		public Docket forumApi() {
+		public Docket desafioApi() {
 			return new Docket(DocumentationType.SWAGGER_2)
 					.select()
 					.apis(RequestHandlerSelectors.basePackage("br.com.itau"))

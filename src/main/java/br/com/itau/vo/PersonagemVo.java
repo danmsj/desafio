@@ -26,9 +26,9 @@ public class PersonagemVo {
 	private List<String> species;
 	private List<String> starships;
 	private List<String> vehicles;
-	private String url;
 	private String created;
 	private String edited;
+	private String url;
 	private List<String> personagemRelacionadoPlaneta;
 	
 }
